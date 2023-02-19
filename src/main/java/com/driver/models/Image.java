@@ -20,6 +20,10 @@ public class Image{
     @JoinColumn
     private Blog blog;
 
+
+
+
+
     public Blog getBlog() {
         return blog;
     }
