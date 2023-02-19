@@ -43,6 +43,6 @@ public class BlogService {
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
-        userRepository1.deleteById(blogId);
+        blogRepository1.deleteById(blogId);
     }
 }
