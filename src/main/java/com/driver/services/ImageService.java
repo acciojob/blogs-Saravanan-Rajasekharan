@@ -17,18 +17,17 @@ public class ImageService {
 
     public Image addImage(Integer blogId, String description, String dimensions)throws Exception{
         //add an image to the blog
+        Blog blog=blogRepository2.findById(blogId).get();
+
         Image image = new Image();
         image.setDescription(description);
         image.setDimensions(dimensions);
-        imageRepository2.save(image); //Save image
+        image.setBlog(blog);
 
-        // add image to imageList
+        blog.getImageList().add(image);
 
-            Blog blog = blogRepository2.findById(blogId).get();
-
-        List<Image> imageList = blog.getImageList();
-        imageList.add(image);
         blogRepository2.save(blog);
+
 
         return image;
     }
@@ -42,19 +41,21 @@ public class ImageService {
         // from id get the image dimensions
 
         Image image = imageRepository2.findById(id).get();
+
+        if (image==null) return 0;
+
         String s = image.getDimensions();
         String [] parts = s.split("X");
         int x = Integer.parseInt(parts[0]);
         int y = Integer.parseInt(parts[1]);
 
-        int prod = x*y;
 
         String [] part = screenDimensions.split("X");
         int u = Integer.parseInt(part[0]);
         int v = Integer.parseInt(part[1]);
 
-        int div = u*v;
+        int count = (u/x)*(v/y);
 
-        return div/prod;
+        return count;
     }
 }
