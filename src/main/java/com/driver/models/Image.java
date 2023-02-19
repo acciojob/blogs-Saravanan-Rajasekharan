@@ -22,8 +22,6 @@ public class Image{
 
 
 
-
-
     public Blog getBlog() {
         return blog;
     }
