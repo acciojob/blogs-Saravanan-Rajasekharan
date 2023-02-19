@@ -24,15 +24,18 @@ public class BlogService {
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
 
-        Blog blog = new Blog();
+        Blog blog=new Blog();
+        //updating the blog details
         blog.setTitle(title);
         blog.setContent(content);
-        //Save Blog??
-        blogRepository1.save(blog);
+        blog.setPubDate(new Date());
 
-        //Link blog to the user
-        User user = userRepository1.findById(userId).get();
-        user.setBlog(blog);
+        //Update the user
+
+        User user=userRepository1.findById(userId).get();
+        blog.setUser(user);
+        user.getBlogList().add(blog);
+
         userRepository1.save(user);
 
         return blog;
