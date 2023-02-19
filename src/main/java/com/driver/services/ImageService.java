@@ -53,6 +53,6 @@ public class ImageService {
 
         int div = u*v;
 
-        return prod/div;
+        return div/prod;
     }
 }
