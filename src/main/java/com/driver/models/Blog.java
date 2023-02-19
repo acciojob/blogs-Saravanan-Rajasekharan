@@ -2,6 +2,7 @@ package com.driver.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -19,27 +20,29 @@ public class Blog{
 
     private List<Image> images;
 
+    private Date pubDate;
+
     @ManyToOne
     @JoinColumn
-    private User userVariableName;
+    private User user;
 
-    @OneToMany(mappedBy = "imageVariableName",cascade = CascadeType.ALL)
-    private Image image;
+    @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
+    private List<Image> imageList;
 
-    public Image getImage() {
-        return image;
+    public List<Image> getImageList() {
+        return imageList;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
     }
 
-    public User getUserVariableName() {
-        return userVariableName;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserVariableName(User userVariableName) {
-        this.userVariableName = userVariableName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Blog() {
@@ -83,5 +86,13 @@ public class Blog{
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 }

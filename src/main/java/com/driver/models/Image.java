@@ -13,19 +13,19 @@ public class Image{
 
     private String description;
 
-    private String dimension;
+    private String dimensions;
 
 
     @ManyToOne
     @JoinColumn
-    private Image imageVariableName;
+    private Blog blog;
 
-    public Image getImageVariableName() {
-        return imageVariableName;
+    public Blog getBlog() {
+        return blog;
     }
 
-    public void setImageVariableName(Image imageVariableName) {
-        this.imageVariableName = imageVariableName;
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 
     public Image(){
@@ -48,11 +48,11 @@ public class Image{
         this.description = description;
     }
 
-    public String getDimension() {
-        return dimension;
+    public String getDimensions() {
+        return dimensions;
     }
 
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
     }
 }

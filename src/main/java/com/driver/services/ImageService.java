@@ -19,14 +19,13 @@ public class ImageService {
         //add an image to the blog
         Image image = new Image();
         image.setDescription(description);
-        image.setDimension(dimensions);
+        image.setDimensions(dimensions);
         imageRepository2.save(image); //Save image
 
         // add image to imageList
         Blog blog = blogRepository2.findById(blogId).get();
-        List<Image> imageList = blog.getImages();
+        List<Image> imageList = blog.getImageList();
         imageList.add(image);
-
         blogRepository2.save(blog);
 
         return image;
@@ -41,7 +40,7 @@ public class ImageService {
         // from id get the image dimensions
 
         Image image = imageRepository2.findById(id).get();
-        String s = image.getDimension();
+        String s = image.getDimensions();
         String [] parts = s.split("X");
         int x = Integer.parseInt(parts[0]);
         int y = Integer.parseInt(parts[1]);

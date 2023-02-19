@@ -20,7 +20,7 @@ public class User{
     private String lastName;
 
 
-    @OneToMany(mappedBy = "userVariableName", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Blog blog;
 
 
